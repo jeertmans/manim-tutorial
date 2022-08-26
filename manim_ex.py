@@ -264,7 +264,7 @@ class MyPi(SVGMobject):
     }
 
     def __init__(self, filename, **kwargs):
-        dirpath = "C:/Users/leblanco.OASIS/Documents/IngeCivilPHD/Presentations/IEEESB_Manim/manim-tutorial/"
+        dirpath = "images/"
         super().__init__(dirpath+filename, **kwargs)
 
 
