@@ -1,0 +1,4 @@
+	https://github.com/3b1b/manim/discussions/1546
+
+Solution proposal:
+	https://github.com/3b1b/manim/issues/1462
