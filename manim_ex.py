@@ -1,3 +1,4 @@
+from typing_extensions import runtime
 from manim import *
 
 class ShowLine(Scene):
@@ -252,3 +253,47 @@ class Quadrant(VMobject):
         points += [r*UP for r in np.arange(self.radius, 0, -1./self.density)]
         self.set_points_smoothly(points)
 
+
+class MyPi(SVGMobject):
+    CONFIG = {
+        "height": 1,
+        "stroke_color": RED,
+        "stroke_width": 3,
+        "fill_color": RED,
+        "fill_opacity": 0,
+    }
+
+    def __init__(self, filename, **kwargs):
+        dirpath = "C:/Users/leblanco.OASIS/Documents/IngeCivilPHD/Presentations/IEEESB_Manim/manim-tutorial/"
+        super().__init__(dirpath+filename, **kwargs)
+
+
+
+class Sample(Scene):
+    def construct(self):
+        Pi = MyPi("dessin.svg")
+        Pi2 = MyPi("dessin2.svg")
+        Pi3 = MyPi("dessin3.svg")
+
+        self.play(Transform(Pi, Pi2))
+        self.play(Transform(Pi, MyPi("dessin.svg")))
+        self.play(Transform(Pi, Pi3))
+        matrix = [[1, 1], [0, 2/3]]
+        self.play(ApplyMatrix(matrix, Pi))
+        self.play(ShrinkToCenter(Pi), remover=True)
+
+
+
+class PiAppear(Animation):
+    def __init__(self, mobject=MyPi("dessin.svg"), mode="linear", **kwargs):
+        if not isinstance(mobject, SVGMobject):
+            raise Exception("Pi mobject must be a SVGMobject")
+
+        Animation.__init__(self, mobject, **kwargs)
+        FadeIn(mobject)
+
+class test (Scene):
+    def construct(self):
+        self.play(PiAppear())
+
+    
