@@ -15,9 +15,11 @@ class ManimTutorialLogo(Scene):
         tutorial = MathTex(r"\mathbb{T}\text{utorial}", fill_color=logo_black).scale(4)
         tutorial.next_to(ds_m, DOWN)
         tutorial.shift(DOWN)
-        book = Tex(r"\faBookReader", fill_color=BLACK, tex_template=tex_template).scale(5)
+        book = Tex(r"\faBookReader", fill_color=BLACK, tex_template=tex_template).scale(
+            5
+        )
         book.next_to(ds_m, LEFT)
-        book.shift(LEFT + .5 * DOWN)
+        book.shift(LEFT + 0.5 * DOWN)
         circle = Circle(color=logo_green, fill_opacity=1).shift(LEFT)
         square = Square(color=logo_blue, fill_opacity=1).shift(UP)
         triangle = Triangle(color=logo_red, fill_opacity=1).shift(RIGHT)
