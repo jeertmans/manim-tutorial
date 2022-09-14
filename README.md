@@ -45,6 +45,14 @@ Create env, etc. Either choose Manim, ManimGl, or both.
 
 ### Use Manim within Jupyter
 
+Link: https://queirozf.com/entries/jupyter-kernels-how-to-add-change-remove
+
+```console
+source your-env/bin/activate
+pip install jupyter
+ipython kernel install --name "your-env" --user
+```
+
 ### Create slides with Manim Slides
 
 ### Manim Physics, etc.
