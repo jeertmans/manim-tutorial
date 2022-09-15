@@ -65,15 +65,15 @@ If you don't know what to choose between Manim (community edition) and ManimGL (
 
 *Why?* For multiple reasons:
 
-* Easier cross-platform installation
-* Does not require to install OpenGL
-* More stable accross time, meaning that a old code from 2 years ago so more likely going to work today than with ManimGL
+* Easier cross-platform installation.
+* Does not require to install OpenGL.
+* Maintained by the community. Hence more stable accross time, meaning that your recently created code is more likely to still work in 2 years with Manim than with ManimGL.
 * Very good documentation, see [here](https://www.manim.community/).
 
 *Why not?* Reasons to prefer ManimGL:
 
-* You want to reproduce some of 3b1b's videos, available on [GitHub](https://github.com/3b1b/videos)
-* You need features that are (currently) only available with ManimGL
+* You want to reproduce some of 3b1b's videos, available on [GitHub](https://github.com/3b1b/videos).
+* You need features that are (currently) only available with ManimGL.
 
 ## How to install Manim
 
