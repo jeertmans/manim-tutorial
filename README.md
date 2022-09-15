@@ -51,7 +51,7 @@ In the following sections, we will guide you to the installation process, to lat
 
 ## Prerequisites
 
-For this tutorial to be successfully followed, you need a working Python installation, whose version is above or equal to 3.8 (¹). See [here](https://www.python.org/downloads/) to install Python.
+For this tutorial to be successfully followed, you need a working Python installation, whose version is above or equal to 3.8 (¹). See [here](https://www.python.org/downloads/) how to install Python.
 
 Then, it is highly recommended, but not mandatory, to create a virtual environment (venv) and to install Python modules in it. If you don't know venv is, please check [this page](https://docs.python.org/3/tutorial/venv.html).
 
