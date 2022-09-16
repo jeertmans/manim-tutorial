@@ -10,18 +10,18 @@
 
 # Table of Contents
 
-- [About Manim and ManimGL](#about-manim-and-manimgl)
-- [About this tutorial](#about-this-tutorial)
-- [Installation Guidelines](#installation-guidelines)
+* [About Manim and ManimGL](#about-manim-and-manimgl)
+* [About this tutorial](#about-this-tutorial)
+* [Installation Guidelines](#installation-guidelines)
   * [Prerequisites](#prerequisites)
   * [Choosing between Manim and ManimGL](#choosing-between-manim-and-manimgl)
   * [How to install Manim](#how-to-install-manim)
   * [How to install ManimGL](#how-to-install-manimgl)
   * [Additional Tools](#additional-tools)
-    + [Use Manim within Jupyter](#use-manim-within-jupyter)
-    + [Create slides with Manim Slides](#create-slides-with-manim-slides)
-    + [Manim Physics, etc.](#manim-physics--etc)
-- [TODOs](#todos)
+    * [Use Manim within Jupyter](#use-manim-within-jupyter)
+    * [Create slides with Manim Slides](#create-slides-with-manim-slides)
+    * [Manim Physics and more](#manim-physics-and-more)
+* [TODOs](#todos)
 
 # About Manim and ManimGL
 
@@ -45,6 +45,7 @@ For the rest of the document, we assumed that:
 Additionally, it is good to know a bit about $\LaTeX$.
 
 If you have any question, please feel free to reach us, see [Report issues](#report-issues).
+
 # Installation Guidelines
 
 In the following sections, we will guide you to the installation process, to later be able to reproduce everything that was presented during the live tutorial.
@@ -126,17 +127,16 @@ where `"you-venv"` refers to the name of your new kernel.
 
 Then, you can now change the kernel in any notebook by clicking `Kernel` -> `Change kernel` -> `your-env`.
 
-
-### Manim Physics, etc.
+### Manim Physics and more
 
 On top of Manim and ManimGL, many users have created their own animations, libraries, tutorials, and so on.
 
 To cite a few, we recommend checking:
 
-- [Manim Physics](https://github.com/Matheart/manim-physics), a physics simulation plugin for Manim
-- [Reducible's YouTube channel](https://www.youtube.com/c/Reducible), a YouTuber that utilizes Manim for its videos ![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UCK8XIGR5kRidIw2fWqwyHRA?style=social)
-- the Manim subreddit for questions and inspirations <a href="https://www.reddit.com/r/manim/"><img src="https://img.shields.io/reddit/subreddit-subscribers/manim?style=social" alt="Manim Subreddit"></a>
-- the Manim Community discord for questions and inspirations <a href="https://www.manim.community/discord/"><img src="https://img.shields.io/discord/581738731934056449.svg?label=discord&color=yellow&logo=discord" alt="Discord"></a>
+* [Manim Physics](https://github.com/Matheart/manim-physics), a physics simulation plugin for Manim
+* [Reducible's YouTube channel](https://www.youtube.com/c/Reducible), a YouTuber that utilizes Manim for its videos ![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UCK8XIGR5kRidIw2fWqwyHRA?style=social)
+* the Manim subreddit for questions and inspirations <a href="https://www.reddit.com/r/manim/"><img src="https://img.shields.io/reddit/subreddit-subscribers/manim?style=social" alt="Manim Subreddit"></a>
+* the Manim Community discord for questions and inspirations <a href="https://www.manim.community/discord/"><img src="https://img.shields.io/discord/581738731934056449.svg?label=discord&color=yellow&logo=discord" alt="Discord"></a>
 
 # Report issues
 
@@ -147,17 +147,17 @@ Please contact use by [creating an issue](https://github.com/jeertmans/manim-tut
 # TODOs
 
 Jérome
-- [ ] Faire les slides "teaser"
-- [ ] Installer manimgl
-- [ ] Choisir une animation manim & une manimlg (vidéo 3b1b) à montrer ?
-- [ ] Générer présentation slides COST
-- [ ] Créer une template notebook ?
-- [ ] Montrer un bête exemple de `manim-slides`
-- [ ] Clean `manim-slides` et finaliser le fix windows ainsi que la fonction backward
-- [ ] Clean repo avant présentation
+* [ ] Faire les slides "teaser"
+* [ ] Installer manimgl
+* [ ] Choisir une animation manim & une manimlg (vidéo 3b1b) à montrer ?
+* [ ] Générer présentation slides COST
+* [ ] Créer une template notebook ?
+* [ ] Montrer un bête exemple de `manim-slides`
+* [ ] Clean `manim-slides` et finaliser le fix windows ainsi que la fonction backward
+* [ ] Clean repo avant présentation
 
 Olivier
-- [ ] Lister les problèmes sous Windows et anticiper les solutions
-- [x] Contacter IEEE SB pour avoir un local BARB (grand) - comodal mais surtout présentiel
-- [x] Préparer un mail pour les étudiants master - mémorants - doctorants - profs
-- [x] Créer image inkscape et l'animer avec manim
+* [ ] Lister les problèmes sous Windows et anticiper les solutions
+* [x] Contacter IEEE SB pour avoir un local BARB (grand) - comodal mais surtout présentiel
+* [x] Préparer un mail pour les étudiants master - mémorants - doctorants - profs
+* [x] Créer image inkscape et l'animer avec manim

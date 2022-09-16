@@ -1,0 +1,13 @@
+# For more explanations, see: https://github.com/DavidAnson/markdownlint/blob/main/schema/.markdownlint.yaml
+
+# MD013/line-length - Line length
+MD013: false
+
+# MD024/no-duplicate-heading/no-duplicate-header - Multiple headings with the same content
+MD024: false
+
+# MD033/no-inline-html - Inlince HTML
+MD033: false
+
+# MD041/first-line-heading/first-line-h1 - Start documented with heading
+MD041: false
