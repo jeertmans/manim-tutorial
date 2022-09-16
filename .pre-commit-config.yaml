@@ -1,12 +1,8 @@
 repos:
-  - repo: local
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.6.0
     hooks:
-      - id: jupyter-nb-clear-output
-        name: jupyter-nb-clear-output
-        files: \.ipynb$
-        stages: [commit]
-        language: system
-        entry: jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace
+      - id: nbstripout
   - repo: https://github.com/pycqa/isort
     rev: 5.10.1
     hooks:
@@ -20,7 +16,7 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.1.0
     hooks:
-    -   id: check-yaml
-    -   id: end-of-file-fixer
-    -   id: trailing-whitespace
-    -   id: mixed-line-ending
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: mixed-line-ending
