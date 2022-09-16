@@ -66,8 +66,8 @@ If you don't know what to choose between Manim (community edition) and ManimGL (
 *Why?* For multiple reasons:
 
 * Easier cross-platform installation.
-* Does not require to install OpenGL.
-* Maintained by the community. Hence more stable accross time, meaning that your recently created code is more likely to still work in 2 years with Manim than with ManimGL.
+* Does not require installing OpenGL.
+* Maintained by the community. Hence, more stable accross time, meaning that your recently created code is more likely to still work in 2 years with Manim than with ManimGL.
 * Very good documentation, see [here](https://www.manim.community/).
 
 *Why not?* Reasons to prefer ManimGL:
@@ -129,7 +129,7 @@ Then, you can now change the kernel in any notebook by clicking `Kernel` -> `Cha
 
 ### Manim Physics, etc.
 
-On top of Manim and ManimGL, a lot a users have created their own animations, libraries, tutorials, and so on.
+On top of Manim and ManimGL, many users have created their own animations, libraries, tutorials, and so on.
 
 To cite a few, we recommend checking:
 
