@@ -1,4 +1,4 @@
-![Manim Tutorial Logo](images/logo.png)
+![Manim Tutorial Logo](slides/images/logo.png)
 
 > This repository contains all the documents related to the Manim Tutorial given by the [UCLouvain IEEE Student Branch](https://sites.uclouvain.be/ieee/).
 > After reading this document, you should be able te reproduce everything that was presented during the tutorial.
