@@ -3,6 +3,37 @@
 This directory contains many code examples that you can run.
 Pleasure read the instructions carefully before running anything.
 
+## Manim Community
+
+You should be able to run the following and preview the Manim logo (see result below):
+```bash
+manim examples/manim_logo.py \
+    --format gif \
+    -p \
+    --resolution 640,320 \
+    --fps 10
+```
+
+![ManimCE Logo](manim_logo.gif)
+
+For more examples, please check out their [Example Gallery](https://docs.manim.community/en/stable/examples.html#).
+
+## ManimGL
+
+You should be able to run the following and preview the ManimGL opening (see result below):
+```bash
+manimgl examples/manimgl_opening.py \
+    --gif \
+    -o \
+    --resolution 640x320 \
+    --fps 10 \
+    --show_animation_progress
+```
+
+![ManimGL Opening](manimgl_opening.gif)
+
+For more examples, please check out their [Example Scenes](https://3b1b.github.io/manim/getting_started/example_scenes.html).
+
 ## Animations from 3Blue1Brown's videos
 
 The YouTuber 3Blue1Brown publishes the source code of all its videos on GitHub. Therefore, it is possible to take his code to generate the same animations as in its videos.
@@ -43,4 +74,4 @@ Once this is done, you can render videos from 3b1b's channel:
 manimgl examples/videos/_2022/worlde/scenes.py
 ```
 
-> **Note:** if you want to use videos that came out after this tutorial, or older videos that are supported only by older ManimGL versions, this is up to you to clone the latest version [3b1b/manim](https://github.com/3b1b/manim)/ [3b1b/videos](https://github.com/3b1b/videos) to keep up your files up to date. For older versions, you can [checkout to a specific commit](https://coderwall.com/p/xyuoza/git-cloning-specific-commits).
+> **Note:** if you want to use videos that came out after this tutorial, or older videos that are supported only by older ManimGL versions, this is up to you to clone the latest version [3b1b/manim](https://github.com/3b1b/manim) & [3b1b/videos](https://github.com/3b1b/videos) to keep up your files up to date. For older versions, you can [checkout to a specific commit](https://coderwall.com/p/xyuoza/git-cloning-specific-commits).
