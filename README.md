@@ -163,4 +163,3 @@ Olivier
 * [x] Contacter IEEE SB pour avoir un local BARB (grand) - comodal mais surtout présentiel
 * [x] Préparer un mail pour les étudiants master - mémorants - doctorants - profs
 * [x] Créer image inkscape et l'animer avec manim
-
