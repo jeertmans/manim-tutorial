@@ -147,6 +147,7 @@ Please contact use by [creating an issue](https://github.com/jeertmans/manim-tut
 # TODOs
 
 Jérome
+
 * [ ] Faire les slides "teaser"
 * [ ] Installer manimgl
 * [ ] Choisir une animation manim & une manimlg (vidéo 3b1b) à montrer ?
@@ -157,7 +158,9 @@ Jérome
 * [ ] Clean repo avant présentation
 
 Olivier
+
 * [ ] Lister les problèmes sous Windows et anticiper les solutions
 * [x] Contacter IEEE SB pour avoir un local BARB (grand) - comodal mais surtout présentiel
 * [x] Préparer un mail pour les étudiants master - mémorants - doctorants - profs
 * [x] Créer image inkscape et l'animer avec manim
+
