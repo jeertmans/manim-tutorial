@@ -142,7 +142,9 @@ To cite a few, we recommend checking:
 
 Did we write something wrong? Did you encounter some bugs following our tutorial? Do you think some content should be added?
 
-Please contact use by [creating an issue](https://github.com/jeertmans/manim-tutorial/issues/new), or use our UCLouvain contact addresses (see above).
+First, check out our [Wiki](https://github.com/jeertmans/manim-tutorial/wiki) to see if your issue is known.
+
+Otherwise, please contact us by [creating an issue](https://github.com/jeertmans/manim-tutorial/issues/new), or use our UCLouvain contact addresses (see above).
 
 # TODOs
 
