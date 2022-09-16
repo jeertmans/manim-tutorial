@@ -74,4 +74,6 @@ Once this is done, you can render videos from 3b1b's channel:
 manimgl examples/videos/_2022/worlde/scenes.py
 ```
 
+> **Warning:** some scenes need files (e.g., scene with the $\pi$ character) that are not avalaible on this repository. So you will not be able to render them, unless you provide those additional files. Check `manimgl --config` for more details.
+
 > **Note:** if you want to use videos that came out after this tutorial, or older videos that are supported only by older ManimGL versions, this is up to you to clone the latest version [3b1b/manim](https://github.com/3b1b/manim) & [3b1b/videos](https://github.com/3b1b/videos) to keep up your files up to date. For older versions, you can [checkout to a specific commit](https://coderwall.com/p/xyuoza/git-cloning-specific-commits).
