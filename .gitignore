@@ -7,3 +7,5 @@ __pycache__/
 media/
 
 slides/.ipynb_checkpoints/
+
+slides/Slides.slides.html
