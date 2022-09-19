@@ -8,6 +8,6 @@ Assuming you have correctly installed Manim and Jupyter, see the main [README](.
 jupyter nbconvert slides/Slides.ipynb --to slides --post serve --no-input
 ```
 
-The generated slides are online [here](https://eertmans.be/manim-tutorial).
+The generated slides are available [online](https://eertmans.be/manim-tutorial).
 
 And that's all!
