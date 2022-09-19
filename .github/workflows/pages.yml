@@ -38,6 +38,8 @@ jobs:
         run: pip install -r slides/requirements.txt
       - name: Build slides
         run: jupyter nbconvert slides/Slides.ipynb --to slides --no-input
+      - name: Rename slides to be index
+        run: mv slides/Slides.slides.html slides/index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
