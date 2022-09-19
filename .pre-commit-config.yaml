@@ -6,7 +6,7 @@ repos:
         files: \.ipynb$
         stages: [commit]
         language: python
-        entry: jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace
+        entry: jupyter nbconvert --to notebook --execute --inplace
         additional_dependencies: ["jupyter"]
   - repo: https://github.com/pycqa/isort
     rev: 5.10.1
