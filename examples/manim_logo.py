@@ -12,7 +12,9 @@ class ManimCELogo(Scene):
         ds_m.shift(2.25 * LEFT + 1.5 * UP)
         circle = Circle(color=logo_green, fill_opacity=1).shift(LEFT)
         square = Square(color=logo_blue, fill_opacity=1).shift(UP)
-        triangle = Triangle(color=logo_red, fill_opacity=1).shift(RIGHT)
+        triangle = Triangle(color=logo_red, fill_opacity=1).shift(
+            RIGHT
+        )
         logo = VGroup(triangle, square, circle, ds_m)  # order matters
         logo.move_to(ORIGIN)
         self.play(SpiralIn(logo), run_time=4)

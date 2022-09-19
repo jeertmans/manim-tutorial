@@ -12,7 +12,9 @@ class ShowLine(Scene):
 class CreateCircle(Scene):
     def construct(self):
         circle = Circle()  # create a circle
-        circle.set_fill(PINK, opacity=0.5)  # set the color and transparency
+        circle.set_fill(
+            PINK, opacity=0.5
+        )  # set the color and transparency
         self.play(Create(circle))  # show the circle on screen
 
 
@@ -26,10 +28,16 @@ class PolarGraphExample(Scene):
 
 class DifferentRotations(Scene):
     def construct(self):
-        left_square = Square(color=BLUE, fill_opacity=0.7).shift(2 * LEFT)
-        right_square = Square(color=GREEN, fill_opacity=0.7).shift(2 * RIGHT)
+        left_square = Square(color=BLUE, fill_opacity=0.7).shift(
+            2 * LEFT
+        )
+        right_square = Square(color=GREEN, fill_opacity=0.7).shift(
+            2 * RIGHT
+        )
         self.play(
-            left_square.animate.rotate(PI), Rotate(right_square, angle=PI), run_time=2
+            left_square.animate.rotate(PI),
+            Rotate(right_square, angle=PI),
+            run_time=2,
         )
         self.wait()
 
@@ -37,7 +45,10 @@ class DifferentRotations(Scene):
 class MathTeXDemo(Scene):
     def construct(self):
         rtarrow0 = MathTex(r"\xrightarrow{x^6y^8}", font_size=96)
-        rtarrow1 = Tex(r"$\xrightarrow{x^6y^8}$", font_size=96)
+        rtarrow1 = Tex(
+            r"$\xrightarrow{x^6y^8}$",
+            font_size=96,
+        )
 
         self.add(VGroup(rtarrow0, rtarrow1).arrange(DOWN))
 
@@ -63,15 +74,26 @@ class MovingZoomedSceneAround(ZoomedScene):
             zoomed_camera_config={
                 "default_frame_stroke_width": 3,
             },
-            **kwargs
+            **kwargs,
         )
 
     def construct(self):
         dot = Dot().shift(UL * 2)
-        image = ImageMobject(np.uint8([[0, 100, 30, 200], [255, 0, 5, 33]]))
+        image = ImageMobject(
+            np.uint8(
+                [
+                    [0, 100, 30, 200],
+                    [255, 0, 5, 33],
+                ]
+            )
+        )
         image.height = 7
         frame_text = Text("Frame", color=PURPLE, font_size=67)
-        zoomed_camera_text = Text("Zoomed camera", color=RED, font_size=67)
+        zoomed_camera_text = Text(
+            "Zoomed camera",
+            color=RED,
+            font_size=67,
+        )
 
         self.add(image, dot)
         zoomed_camera = self.zoomed_camera
@@ -85,20 +107,29 @@ class MovingZoomedSceneAround(ZoomedScene):
         zoomed_display.shift(DOWN)
 
         zd_rect = BackgroundRectangle(
-            zoomed_display, fill_opacity=0, buff=MED_SMALL_BUFF
+            zoomed_display,
+            fill_opacity=0,
+            buff=MED_SMALL_BUFF,
         )
         self.add_foreground_mobject(zd_rect)
 
         unfold_camera = UpdateFromFunc(
-            zd_rect, lambda rect: rect.replace(zoomed_display)
+            zd_rect,
+            lambda rect: rect.replace(zoomed_display),
         )
 
         frame_text.next_to(frame, DOWN)
 
-        self.play(Create(frame), FadeIn(frame_text, shift=UP))
+        self.play(
+            Create(frame),
+            FadeIn(frame_text, shift=UP),
+        )
         self.activate_zooming()
 
-        self.play(self.get_zoomed_display_pop_out_animation(), unfold_camera)
+        self.play(
+            self.get_zoomed_display_pop_out_animation(),
+            unfold_camera,
+        )
         zoomed_camera_text.next_to(zoomed_display_frame, DOWN)
         self.play(FadeIn(zoomed_camera_text, shift=UP))
         # Scale in        x   y  z
@@ -119,14 +150,19 @@ class MovingZoomedSceneAround(ZoomedScene):
             unfold_camera,
             rate_func=lambda t: smooth(1 - t),
         )
-        self.play(Uncreate(zoomed_display_frame), FadeOut(frame))
+        self.play(
+            Uncreate(zoomed_display_frame),
+            FadeOut(frame),
+        )
         self.wait()
 
 
 class OpeningManim(Scene):
     def construct(self):
         title = Tex(r"This is some \LaTeX")
-        basel = MathTex(r"\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}")
+        basel = MathTex(
+            r"\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}"
+        )
         VGroup(title, basel).arrange(DOWN)
         self.play(
             Write(title),
@@ -146,7 +182,9 @@ class OpeningManim(Scene):
         grid_title = Tex("This is a grid", font_size=72)
         grid_title.move_to(transform_title)
 
-        self.add(grid, grid_title)  # Make sure title is on top of grid
+        self.add(
+            grid, grid_title
+        )  # Make sure title is on top of grid
         self.play(
             FadeOut(title),
             FadeIn(grid_title, shift=UP),
@@ -179,8 +217,15 @@ class OpeningManim(Scene):
 
 class ContinuousMotion(Scene):
     def construct(self):
-        func = lambda pos: np.sin(pos[0] / 2) * UR + np.cos(pos[1] / 2) * LEFT
-        stream_lines = StreamLines(func, stroke_width=2, max_anchors_per_line=30)
+        func = (
+            lambda pos: np.sin(pos[0] / 2) * UR
+            + np.cos(pos[1] / 2) * LEFT
+        )
+        stream_lines = StreamLines(
+            func,
+            stroke_width=2,
+            max_anchors_per_line=30,
+        )
         self.add(stream_lines)
         stream_lines.start_animation(warm_up=False, flow_speed=1.5)
         self.wait(stream_lines.virtual_time / stream_lines.flow_speed)
@@ -205,8 +250,12 @@ class Introduction(MovingCameraScene):
         def div_func(p):
             return p / 3
 
-        div_vector_field = VectorField(div_func, **self.vector_field_config)
-        stream_lines = StreamLines(div_func, **self.stream_lines_config)
+        div_vector_field = VectorField(
+            div_func, **self.vector_field_config
+        )
+        stream_lines = StreamLines(
+            div_func, **self.stream_lines_config
+        )
         stream_lines.shuffle()
         div_title = self.get_title("Divergence")
 
@@ -214,21 +263,32 @@ class Introduction(MovingCameraScene):
         self.play(
             LaggedStartMap(ShowPassingFlash, stream_lines),
             FadeIn(div_title[0]),
-            *list(map(GrowFromCenter, div_title[1]))
+            *list(map(GrowFromCenter, div_title[1])),
         )
 
         # Curl
         def curl_func(p):
             return rotate_vector(p / 3, 90 * DEGREES)
 
-        curl_vector_field = VectorField(curl_func, **self.vector_field_config)
-        stream_lines = StreamLines(curl_func, **self.stream_lines_config)
+        curl_vector_field = VectorField(
+            curl_func, **self.vector_field_config
+        )
+        stream_lines = StreamLines(
+            curl_func, **self.stream_lines_config
+        )
         stream_lines.shuffle()
         curl_title = self.get_title("Curl")
 
         self.play(
-            ReplacementTransform(div_vector_field, curl_vector_field),
-            ReplacementTransform(div_title, curl_title, path_arc=90 * DEGREES),
+            ReplacementTransform(
+                div_vector_field,
+                curl_vector_field,
+            ),
+            ReplacementTransform(
+                div_title,
+                curl_title,
+                path_arc=90 * DEGREES,
+            ),
         )
         self.play(ShowPassingFlash(stream_lines, run_time=3))
         self.wait()
@@ -251,12 +311,26 @@ class Quadrant(VMobject):
     }
 
     def init_points(self):
-        points = [r * RIGHT for r in np.arange(0, self.radius, 1.0 / self.density)]
+        points = [
+            r * RIGHT
+            for r in np.arange(0, self.radius, 1.0 / self.density)
+        ]
         points += [
             self.radius * (np.cos(theta) * RIGHT + np.sin(theta) * UP)
-            for theta in np.arange(0, TAU / 4, 1.0 / (self.radius * self.density))
+            for theta in np.arange(
+                0,
+                TAU / 4,
+                1.0 / (self.radius * self.density),
+            )
         ]
-        points += [r * UP for r in np.arange(self.radius, 0, -1.0 / self.density)]
+        points += [
+            r * UP
+            for r in np.arange(
+                self.radius,
+                0,
+                -1.0 / self.density,
+            )
+        ]
         self.set_points_smoothly(points)
 
 
@@ -289,7 +363,12 @@ class Sample(Scene):
 
 
 class PiAppear(Animation):
-    def __init__(self, mobject=MyPi("dessin.svg"), mode="linear", **kwargs):
+    def __init__(
+        self,
+        mobject=MyPi("dessin.svg"),
+        mode="linear",
+        **kwargs,
+    ):
         if not isinstance(mobject, SVGMobject):
             raise Exception("Pi mobject must be a SVGMobject")
 

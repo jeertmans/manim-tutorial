@@ -1,13 +1,4 @@
 repos:
-  - repo: https://github.com/toobaz/ipynb_output_filter
-    hooks:
-      - id: jupyter-nb-filter-id
-        name: jupyter-nb-filter-id
-        files: \.ipynb$
-        stages: [commit]
-        language: python
-        entry: python ipynb_output_filter.py
-        additional_dependencies: ["jupyter"]
   - repo: https://github.com/pycqa/isort
     rev: 5.10.1
     hooks:

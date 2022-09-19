@@ -20,7 +20,10 @@ class OpeningManimExample(Scene):
         matrix = [[1, 1], [0, 1]]
         linear_transform_words = VGroup(
             Text("This is what the matrix"),
-            IntegerMatrix(matrix, include_background_rectangle=True),
+            IntegerMatrix(
+                matrix,
+                include_background_rectangle=True,
+            ),
             Text("looks like"),
         )
         linear_transform_words.arrange(RIGHT)
@@ -28,10 +31,17 @@ class OpeningManimExample(Scene):
         linear_transform_words.set_stroke(BLACK, 10, background=True)
 
         self.play(
-            ShowCreation(grid), FadeTransform(intro_words, linear_transform_words)
+            ShowCreation(grid),
+            FadeTransform(
+                intro_words,
+                linear_transform_words,
+            ),
         )
         self.wait()
-        self.play(grid.animate.apply_matrix(matrix), run_time=3)
+        self.play(
+            grid.animate.apply_matrix(matrix),
+            run_time=3,
+        )
         self.wait()
 
         # Complex map
@@ -53,11 +63,16 @@ class OpeningManimExample(Scene):
             FadeOut(grid),
             Write(c_grid, run_time=3),
             FadeIn(moving_c_grid),
-            FadeTransform(linear_transform_words, complex_map_words),
+            FadeTransform(
+                linear_transform_words,
+                complex_map_words,
+            ),
         )
         self.wait()
         self.play(
-            moving_c_grid.animate.apply_complex_function(lambda z: z**2),
+            moving_c_grid.animate.apply_complex_function(
+                lambda z: z**2
+            ),
             run_time=6,
         )
         self.wait(2)

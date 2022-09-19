@@ -12,17 +12,31 @@ class ManimTutorialLogo(Scene):
         logo_black = "#343434"
         ds_m = MathTex(r"\mathbb{M}", fill_color=logo_black).scale(7)
         ds_m.shift(2.25 * LEFT + 1.5 * UP)
-        tutorial = MathTex(r"\mathbb{T}\text{utorial}", fill_color=logo_black).scale(4)
+        tutorial = MathTex(
+            r"\mathbb{T}\text{utorial}",
+            fill_color=logo_black,
+        ).scale(4)
         tutorial.next_to(ds_m, DOWN)
         tutorial.shift(DOWN)
         book = Tex(
-            r"\faBookReader", fill_color=logo_black, tex_template=tex_template
+            r"\faBookReader",
+            fill_color=logo_black,
+            tex_template=tex_template,
         ).scale(5)
         book.next_to(ds_m, LEFT)
         book.shift(LEFT + 0.5 * DOWN)
         circle = Circle(color=logo_green, fill_opacity=1).shift(LEFT)
         square = Square(color=logo_blue, fill_opacity=1).shift(UP)
-        triangle = Triangle(color=logo_red, fill_opacity=1).shift(RIGHT)
-        logo = VGroup(triangle, square, circle, ds_m, tutorial, book)  # order matters
+        triangle = Triangle(color=logo_red, fill_opacity=1).shift(
+            RIGHT
+        )
+        logo = VGroup(
+            triangle,
+            square,
+            circle,
+            ds_m,
+            tutorial,
+            book,
+        )  # order matters
         logo.move_to(ORIGIN)
         self.add(logo)

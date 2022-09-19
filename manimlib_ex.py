@@ -16,10 +16,16 @@ class ShowSquare(Scene):
 
 class DifferentRotations(Scene):
     def construct(self):
-        left_square = Square(color=BLUE, fill_opacity=0.7).shift(2 * LEFT)
-        right_square = Square(color=GREEN, fill_opacity=0.7).shift(2 * RIGHT)
+        left_square = Square(color=BLUE, fill_opacity=0.7).shift(
+            2 * LEFT
+        )
+        right_square = Square(color=GREEN, fill_opacity=0.7).shift(
+            2 * RIGHT
+        )
         self.play(
-            left_square.animate.rotate(PI), Rotate(right_square, angle=PI), run_time=2
+            left_square.animate.rotate(PI),
+            Rotate(right_square, angle=PI),
+            run_time=2,
         )
         self.wait()
 
@@ -43,7 +49,10 @@ class OpeningManimExample(Scene):
         matrix = [[1, 1], [0, 1]]
         linear_transform_words = VGroup(
             Text("This is what the matrix"),
-            IntegerMatrix(matrix, include_background_rectangle=True),
+            IntegerMatrix(
+                matrix,
+                include_background_rectangle=True,
+            ),
             Text("looks like"),
         )
         linear_transform_words.arrange(RIGHT)
@@ -51,10 +60,17 @@ class OpeningManimExample(Scene):
         linear_transform_words.set_stroke(BLACK, 10, background=True)
 
         self.play(
-            ShowCreation(grid), FadeTransform(intro_words, linear_transform_words)
+            ShowCreation(grid),
+            FadeTransform(
+                intro_words,
+                linear_transform_words,
+            ),
         )
         self.wait()
-        self.play(grid.animate.apply_matrix(matrix), run_time=3)
+        self.play(
+            grid.animate.apply_matrix(matrix),
+            run_time=3,
+        )
         self.wait()
 
         # Complex map
@@ -76,17 +92,27 @@ class OpeningManimExample(Scene):
             FadeOut(grid),
             Write(c_grid, run_time=3),
             FadeIn(moving_c_grid),
-            FadeTransform(linear_transform_words, complex_map_words),
+            FadeTransform(
+                linear_transform_words,
+                complex_map_words,
+            ),
         )
         self.wait()
         self.play(
-            moving_c_grid.animate.apply_complex_function(lambda z: z**2),
+            moving_c_grid.animate.apply_complex_function(
+                lambda z: z**2
+            ),
             run_time=6,
         )
         self.wait(2)
 
 
-def get_matrix_exponential(matrix, height=1.5, scalar_tex="t", **matrix_config):
+def get_matrix_exponential(
+    matrix,
+    height=1.5,
+    scalar_tex="t",
+    **matrix_config,
+):
     elem = matrix[0][0]
     if isinstance(elem, str):
         mat_class = Matrix
@@ -104,7 +130,12 @@ def get_matrix_exponential(matrix, height=1.5, scalar_tex="t", **matrix_config):
     if scalar_tex:
         scalar = Tex(scalar_tex)
         scalar.set_height(0.7 * base.get_height())
-        scalar.next_to(matrix, RIGHT, buff=SMALL_BUFF, aligned_edge=DOWN)
+        scalar.next_to(
+            matrix,
+            RIGHT,
+            buff=SMALL_BUFF,
+            aligned_edge=DOWN,
+        )
         result.add(scalar)
     return result
 
@@ -140,7 +171,11 @@ class AnimatingMethods(Scene):
         # The same applies for any method, including those setting colors.
         self.play(grid.animate.set_color(YELLOW))
         self.wait()
-        self.play(grid.animate.set_submobject_colors_by_gradient(BLUE, GREEN))
+        self.play(
+            grid.animate.set_submobject_colors_by_gradient(
+                BLUE, GREEN
+            )
+        )
         self.wait()
         self.play(grid.animate.set_height(TAU - MED_SMALL_BUFF))
         self.wait()
@@ -148,7 +183,10 @@ class AnimatingMethods(Scene):
         # The method Mobject.apply_complex_function lets you apply arbitrary
         # complex functions, treating the points defining the mobject as
         # complex numbers.
-        self.play(grid.animate.apply_complex_function(np.exp), run_time=5)
+        self.play(
+            grid.animate.apply_complex_function(np.exp),
+            run_time=5,
+        )
         self.wait()
 
         # Even more generally, you could apply Mobject.apply_function,
@@ -193,8 +231,16 @@ class SurfaceExample(Scene):
         night_texture = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/The_earth_at_night.jpg/1280px-The_earth_at_night.jpg"
 
         surfaces = [
-            TexturedSurface(surface, day_texture, night_texture)
-            for surface in [sphere, torus1, torus2]
+            TexturedSurface(
+                surface,
+                day_texture,
+                night_texture,
+            )
+            for surface in [
+                sphere,
+                torus1,
+                torus2,
+            ]
         ]
 
         for mob in surfaces:
@@ -213,7 +259,11 @@ class SurfaceExample(Scene):
 
         self.play(
             FadeIn(surface),
-            ShowCreation(surface.mesh, lag_ratio=0.01, run_time=3),
+            ShowCreation(
+                surface.mesh,
+                lag_ratio=0.01,
+                run_time=3,
+            ),
         )
         for mob in surfaces:
             mob.add(mob.mesh)
@@ -222,7 +272,10 @@ class SurfaceExample(Scene):
         for mob in surfaces[1:]:
             mob.rotate(PI / 2)
 
-        self.play(Transform(surface, surfaces[1]), run_time=3)
+        self.play(
+            Transform(surface, surfaces[1]),
+            run_time=3,
+        )
 
         self.play(
             Transform(surface, surfaces[2]),
@@ -243,8 +296,14 @@ class SurfaceExample(Scene):
         light = self.camera.light_source
         self.add(light)
         light.save_state()
-        self.play(light.animate.move_to(3 * IN), run_time=5)
-        self.play(light.animate.shift(10 * OUT), run_time=5)
+        self.play(
+            light.animate.move_to(3 * IN),
+            run_time=5,
+        )
+        self.play(
+            light.animate.shift(10 * OUT),
+            run_time=5,
+        )
 
         drag_text = Text("Try moving the mouse while pressing d or s")
         drag_text.move_to(light_text)
@@ -256,9 +315,14 @@ class SurfaceExample(Scene):
 
 class LeadToPhysicsAndQM(Scene):
     def construct(self):
-        de_words = TexText("Differential\\\\equations", font_size=60)
+        de_words = TexText(
+            "Differential\\\\equations",
+            font_size=60,
+        )
         de_words.set_x(-3).to_edge(UP)
-        mat_exp = get_matrix_exponential([[3, 1, 4], [1, 5, 9], [2, 6, 5]])
+        mat_exp = get_matrix_exponential(
+            [[3, 1, 4], [1, 5, 9], [2, 6, 5]]
+        )
         mat_exp[1].set_color(TEAL)
         mat_exp.next_to(de_words, DOWN, buff=3)
 
@@ -270,7 +334,9 @@ class LeadToPhysicsAndQM(Scene):
         qm_exp = Tex("e^{-i \\hat{H} t / \\hbar}")
         qm_exp.scale(2)
         qm_exp.refresh_bounding_box()
-        qm_exp[0][0].set_height(mat_exp[0].get_height(), about_edge=UR)
+        qm_exp[0][0].set_height(
+            mat_exp[0].get_height(), about_edge=UR
+        )
         qm_exp[0][0].shift(SMALL_BUFF * DOWN)
         qm_exp.match_x(qm_words)
         qm_exp.align_to(mat_exp, DOWN)
@@ -286,7 +352,10 @@ class LeadToPhysicsAndQM(Scene):
             FadeIn(mat_exp, shift=DOWN),
         )
         self.wait()
-        self.play(GrowArrow(top_arrow), FadeIn(physics_words, RIGHT))
+        self.play(
+            GrowArrow(top_arrow),
+            FadeIn(physics_words, RIGHT),
+        )
         self.wait()
         self.play(
             FadeOut(physics_words, UP),
@@ -320,15 +389,29 @@ class HowBasisVectorMultiplicationPullsOutColumns(Scene):
         self.add(matrix)
 
         basis_vectors = VGroup(
-            Arrow(plane.get_origin(), plane.c2p(1, 0), buff=0, fill_color=GREEN),
-            Arrow(plane.get_origin(), plane.c2p(0, 1), buff=0, fill_color=RED),
+            Arrow(
+                plane.get_origin(),
+                plane.c2p(1, 0),
+                buff=0,
+                fill_color=GREEN,
+            ),
+            Arrow(
+                plane.get_origin(),
+                plane.c2p(0, 1),
+                buff=0,
+                fill_color=RED,
+            ),
         )
         bhb = 0.2
         basis_labels = VGroup(
             Matrix([["1"], ["0"]], bracket_h_buff=bhb),
             Matrix([["0"], ["1"]], bracket_h_buff=bhb),
         )
-        for vector, label, direction in zip(basis_vectors, basis_labels, [UR, RIGHT]):
+        for vector, label, direction in zip(
+            basis_vectors,
+            basis_labels,
+            [UR, RIGHT],
+        ):
             label.scale(0.7)
             label.match_color(vector)
             label.add_to_back(BackgroundRectangle(label))
@@ -344,9 +427,15 @@ class HowBasisVectorMultiplicationPullsOutColumns(Scene):
 
         def show_basis_product(index, matrix):
             basis_label_copies[index].match_height(matrix)
-            basis_label_copies[index].next_to(matrix, RIGHT, SMALL_BUFF),
+            basis_label_copies[index].next_to(
+                matrix, RIGHT, SMALL_BUFF
+            ),
             equals = Tex("=")
-            equals.next_to(basis_label_copies[index], RIGHT, SMALL_BUFF)
+            equals.next_to(
+                basis_label_copies[index],
+                RIGHT,
+                SMALL_BUFF,
+            )
             rhss[index].next_to(equals, RIGHT, SMALL_BUFF)
             rhss[index].set_color(colors[index])
             rhs_br = BackgroundRectangle(rhss[index])
@@ -359,17 +448,24 @@ class HowBasisVectorMultiplicationPullsOutColumns(Scene):
                 FadeIn(rhs_br),
                 FadeIn(rhss[index].get_brackets()),
             )
-            rect_kw = {"stroke_width": 2, "buff": 0.1}
+            rect_kw = {
+                "stroke_width": 2,
+                "buff": 0.1,
+            }
             row_rects = [
-                SurroundingRectangle(row, **rect_kw) for row in matrix.get_rows()
+                SurroundingRectangle(row, **rect_kw)
+                for row in matrix.get_rows()
             ]
             col_rect = SurroundingRectangle(
-                basis_label_copies[index].get_entries(), **rect_kw
+                basis_label_copies[index].get_entries(),
+                **rect_kw,
             )
             col_rect.set_stroke(opacity=0)
             last_row_rect = VMobject()
             for e1, e2, row_rect in zip(
-                matrix.get_columns()[index], rhss[index].get_entries(), row_rects
+                matrix.get_columns()[index],
+                rhss[index].get_entries(),
+                row_rects,
             ):
                 self.play(
                     col_rect.animate.set_stroke(opacity=1),
@@ -379,7 +475,10 @@ class HowBasisVectorMultiplicationPullsOutColumns(Scene):
                     FadeIn(e2),
                 )
                 last_row_rect = row_rect
-            self.play(FadeOut(last_row_rect), FadeOut(col_rect))
+            self.play(
+                FadeOut(last_row_rect),
+                FadeOut(col_rect),
+            )
             rhss[index].add_to_back(rhs_br)
             rhss[index].add(equals)
 
@@ -425,7 +524,9 @@ class GraphExample(Scene):
         # has it match the color of the graph
         sin_label = axes.get_graph_label(sin_graph, "\\sin(x)")
         relu_label = axes.get_graph_label(relu_graph, Text("ReLU"))
-        step_label = axes.get_graph_label(step_graph, Text("Step"), x=4)
+        step_label = axes.get_graph_label(
+            step_graph, Text("Step"), x=4
+        )
 
         self.play(
             ShowCreation(sin_graph),
@@ -445,7 +546,11 @@ class GraphExample(Scene):
 
         parabola = axes.get_graph(lambda x: 0.25 * x**2)
         parabola.set_stroke(BLUE)
-        self.play(FadeOut(step_graph), FadeOut(step_label), ShowCreation(parabola))
+        self.play(
+            FadeOut(step_graph),
+            FadeOut(step_label),
+            ShowCreation(parabola),
+        )
         self.wait()
 
         # You can use axes.input_to_graph_point, abbreviated
@@ -458,8 +563,17 @@ class GraphExample(Scene):
         # with the intent of having other mobjects update based
         # on the parameter
         x_tracker = ValueTracker(2)
-        f_always(dot.move_to, lambda: axes.i2gp(x_tracker.get_value(), parabola))
+        f_always(
+            dot.move_to,
+            lambda: axes.i2gp(x_tracker.get_value(), parabola),
+        )
 
-        self.play(x_tracker.animate.set_value(4), run_time=3)
-        self.play(x_tracker.animate.set_value(-2), run_time=3)
+        self.play(
+            x_tracker.animate.set_value(4),
+            run_time=3,
+        )
+        self.play(
+            x_tracker.animate.set_value(-2),
+            run_time=3,
+        )
         self.wait()
