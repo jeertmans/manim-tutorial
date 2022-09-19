@@ -37,7 +37,7 @@ jobs:
       - name: Install Python dependencies
         run: pip install manim jupyter
       - name: Build slides
-        run: jupyter nbconvert Slides.ipynb --to slides --no-input
+        run: jupyter nbconvert slides/Slides.ipynb --to slides --no-input
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
