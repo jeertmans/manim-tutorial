@@ -1,15 +1,18 @@
 from manimlib import *
 
+
 class ShowLine(Scene):
     def construct(self):
         line = Line(fill_opacity=1.0)
         self.add(line)
         # self.play(ShowCreation(line))
 
+
 class ShowSquare(Scene):
     def construct(self):
-        square=Square(fill_opacity=0.5)
+        square = Square(fill_opacity=0.5)
         self.add(square)
+
 
 class DifferentRotations(Scene):
     def construct(self):
@@ -20,13 +23,16 @@ class DifferentRotations(Scene):
         )
         self.wait()
 
+
 class OpeningManimExample(Scene):
     def construct(self):
-        intro_words = Text("""
+        intro_words = Text(
+            """
             The original motivation for manim was to
             better illustrate mathematical functions
             as transformations.
-        """)
+        """
+        )
         intro_words.to_edge(UP)
 
         self.play(Write(intro_words))
@@ -38,15 +44,14 @@ class OpeningManimExample(Scene):
         linear_transform_words = VGroup(
             Text("This is what the matrix"),
             IntegerMatrix(matrix, include_background_rectangle=True),
-            Text("looks like")
+            Text("looks like"),
         )
         linear_transform_words.arrange(RIGHT)
         linear_transform_words.to_edge(UP)
         linear_transform_words.set_stroke(BLACK, 10, background=True)
 
         self.play(
-            ShowCreation(grid),
-            FadeTransform(intro_words, linear_transform_words)
+            ShowCreation(grid), FadeTransform(intro_words, linear_transform_words)
         )
         self.wait()
         self.play(grid.animate.apply_matrix(matrix), run_time=3)
@@ -58,10 +63,12 @@ class OpeningManimExample(Scene):
         moving_c_grid.prepare_for_nonlinear_transform()
         c_grid.set_stroke(BLUE_E, 1)
         c_grid.add_coordinate_labels(font_size=24)
-        complex_map_words = TexText("""
+        complex_map_words = TexText(
+            """
             Or thinking of the plane as $\\mathds{C}$,\\\\
             this is the map $z \\rightarrow z^2$
-        """)
+        """
+        )
         complex_map_words.to_corner(UR)
         complex_map_words.set_stroke(BLACK, 5, background=True)
 
@@ -100,6 +107,7 @@ def get_matrix_exponential(matrix, height=1.5, scalar_tex="t", **matrix_config):
         scalar.next_to(matrix, RIGHT, buff=SMALL_BUFF, aligned_edge=DOWN)
         result.add(scalar)
     return result
+
 
 def mat_exp(matrix, N=100):
     curr = np.identity(len(matrix))
@@ -150,7 +158,7 @@ class AnimatingMethods(Scene):
                 lambda p: [
                     p[0] + 0.5 * math.sin(p[1]),
                     p[1] + 0.5 * math.sin(p[0]),
-                    p[2]
+                    p[2],
                 ]
             ),
             run_time=5,
@@ -214,17 +222,14 @@ class SurfaceExample(Scene):
         for mob in surfaces[1:]:
             mob.rotate(PI / 2)
 
-        self.play(
-            Transform(surface, surfaces[1]),
-            run_time=3
-        )
+        self.play(Transform(surface, surfaces[1]), run_time=3)
 
         self.play(
             Transform(surface, surfaces[2]),
             # Move camera frame during the transition
             frame.animate.increment_phi(-10 * DEGREES),
             frame.animate.increment_theta(-20 * DEGREES),
-            run_time=3
+            run_time=3,
         )
         # Add ambient rotation
         frame.add_updater(lambda m, dt: m.increment_theta(-0.1 * dt))
@@ -281,10 +286,7 @@ class LeadToPhysicsAndQM(Scene):
             FadeIn(mat_exp, shift=DOWN),
         )
         self.wait()
-        self.play(
-            GrowArrow(top_arrow),
-            FadeIn(physics_words, RIGHT)
-        )
+        self.play(GrowArrow(top_arrow), FadeIn(physics_words, RIGHT))
         self.wait()
         self.play(
             FadeOut(physics_words, UP),
@@ -359,13 +361,16 @@ class HowBasisVectorMultiplicationPullsOutColumns(Scene):
             )
             rect_kw = {"stroke_width": 2, "buff": 0.1}
             row_rects = [
-                SurroundingRectangle(row, **rect_kw)
-                for row in matrix.get_rows()
+                SurroundingRectangle(row, **rect_kw) for row in matrix.get_rows()
             ]
-            col_rect = SurroundingRectangle(basis_label_copies[index].get_entries(), **rect_kw)
+            col_rect = SurroundingRectangle(
+                basis_label_copies[index].get_entries(), **rect_kw
+            )
             col_rect.set_stroke(opacity=0)
             last_row_rect = VMobject()
-            for e1, e2, row_rect in zip(matrix.get_columns()[index], rhss[index].get_entries(), row_rects):
+            for e1, e2, row_rect in zip(
+                matrix.get_columns()[index], rhss[index].get_entries(), row_rects
+            ):
                 self.play(
                     col_rect.animate.set_stroke(opacity=1),
                     FadeIn(row_rect),
@@ -384,6 +389,7 @@ class HowBasisVectorMultiplicationPullsOutColumns(Scene):
         self.play(low_matrix.animate.shift(2.5 * DOWN))
         show_basis_product(1, low_matrix)
         self.wait()
+
 
 class GraphExample(Scene):
     def construct(self):
@@ -439,11 +445,7 @@ class GraphExample(Scene):
 
         parabola = axes.get_graph(lambda x: 0.25 * x**2)
         parabola.set_stroke(BLUE)
-        self.play(
-            FadeOut(step_graph),
-            FadeOut(step_label),
-            ShowCreation(parabola)
-        )
+        self.play(FadeOut(step_graph), FadeOut(step_label), ShowCreation(parabola))
         self.wait()
 
         # You can use axes.input_to_graph_point, abbreviated
@@ -456,10 +458,7 @@ class GraphExample(Scene):
         # with the intent of having other mobjects update based
         # on the parameter
         x_tracker = ValueTracker(2)
-        f_always(
-            dot.move_to,
-            lambda: axes.i2gp(x_tracker.get_value(), parabola)
-        )
+        f_always(dot.move_to, lambda: axes.i2gp(x_tracker.get_value(), parabola))
 
         self.play(x_tracker.animate.set_value(4), run_time=3)
         self.play(x_tracker.animate.set_value(-2), run_time=3)

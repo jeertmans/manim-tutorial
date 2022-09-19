@@ -1,0 +1,6 @@
+[submodule "examples/videos"]
+	path = examples/videos
+	url = https://github.com/3b1b/videos
+[submodule "manimgl"]
+	path = examples/manimgl
+	url = https://github.com/3b1b/manim
