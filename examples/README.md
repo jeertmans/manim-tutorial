@@ -16,7 +16,7 @@ manim examples/manim_logo.py \
 
 ![ManimCE Logo](manim_logo.gif)
 
-For more examples, please check out their [Example Gallery](https://docs.manim.community/en/stable/examples.html#). Some of those examples can be found in [manim_examples.py]().
+For more examples, please check out their [Example Gallery](https://docs.manim.community/en/stable/examples.html#). Some of those examples can be found in [manim_examples.py](manim_examples.py).
 
 
 ## ManimGL
@@ -33,7 +33,7 @@ manimgl examples/manimgl_opening.py \
 
 ![ManimGL Opening](manimgl_opening.gif)
 
-For more examples, please check out their [Example Scenes](https://3b1b.github.io/manim/getting_started/example_scenes.html). Some of those examples can be found in [manimgl_examples.py]().
+For more examples, please check out their [Example Scenes](https://3b1b.github.io/manim/getting_started/example_scenes.html). Some of those examples can be found in [manimgl_examples.py](manim_examples).
 
 ## Animations from 3Blue1Brown's videos
 
