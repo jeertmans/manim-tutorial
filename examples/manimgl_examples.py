@@ -4,8 +4,7 @@ from manimlib import *
 class ShowLine(Scene):
     def construct(self):
         line = Line(fill_opacity=1.0)
-        self.add(line)
-        # self.play(ShowCreation(line))
+        self.play(ShowCreation(line))
 
 
 class ShowSquare(Scene):
@@ -28,83 +27,6 @@ class DifferentRotations(Scene):
             run_time=2,
         )
         self.wait()
-
-
-class OpeningManimExample(Scene):
-    def construct(self):
-        intro_words = Text(
-            """
-            The original motivation for manim was to
-            better illustrate mathematical functions
-            as transformations.
-        """
-        )
-        intro_words.to_edge(UP)
-
-        self.play(Write(intro_words))
-        self.wait(2)
-
-        # Linear transform
-        grid = NumberPlane((-10, 10), (-5, 5))
-        matrix = [[1, 1], [0, 1]]
-        linear_transform_words = VGroup(
-            Text("This is what the matrix"),
-            IntegerMatrix(
-                matrix,
-                include_background_rectangle=True,
-            ),
-            Text("looks like"),
-        )
-        linear_transform_words.arrange(RIGHT)
-        linear_transform_words.to_edge(UP)
-        linear_transform_words.set_stroke(BLACK, 10, background=True)
-
-        self.play(
-            ShowCreation(grid),
-            FadeTransform(
-                intro_words,
-                linear_transform_words,
-            ),
-        )
-        self.wait()
-        self.play(
-            grid.animate.apply_matrix(matrix),
-            run_time=3,
-        )
-        self.wait()
-
-        # Complex map
-        c_grid = ComplexPlane()
-        moving_c_grid = c_grid.copy()
-        moving_c_grid.prepare_for_nonlinear_transform()
-        c_grid.set_stroke(BLUE_E, 1)
-        c_grid.add_coordinate_labels(font_size=24)
-        complex_map_words = TexText(
-            """
-            Or thinking of the plane as $\\mathds{C}$,\\\\
-            this is the map $z \\rightarrow z^2$
-        """
-        )
-        complex_map_words.to_corner(UR)
-        complex_map_words.set_stroke(BLACK, 5, background=True)
-
-        self.play(
-            FadeOut(grid),
-            Write(c_grid, run_time=3),
-            FadeIn(moving_c_grid),
-            FadeTransform(
-                linear_transform_words,
-                complex_map_words,
-            ),
-        )
-        self.wait()
-        self.play(
-            moving_c_grid.animate.apply_complex_function(
-                lambda z: z**2
-            ),
-            run_time=6,
-        )
-        self.wait(2)
 
 
 def get_matrix_exponential(
@@ -140,67 +62,124 @@ def get_matrix_exponential(
     return result
 
 
-def mat_exp(matrix, N=100):
-    curr = np.identity(len(matrix))
-    curr_sum = curr
-    for n in range(1, N):
-        curr = np.dot(curr, matrix) / n
-        curr_sum += curr
-    return curr_sum
-
-
-class AnimatingMethods(Scene):
+class TexTransformExample(Scene):
     def construct(self):
-        grid = Tex(r"\pi").get_grid(10, 10, height=4)
-        self.add(grid)
-
-        # You can animate the application of mobject methods with the
-        # ".animate" syntax:
-        self.play(grid.animate.shift(LEFT))
-
-        # Alternatively, you can use the older syntax by passing the
-        # method and then the arguments to the scene's "play" function:
-        self.play(grid.shift, LEFT)
-
-        # Both of those will interpolate between the mobject's initial
-        # state and whatever happens when you apply that method.
-        # For this example, calling grid.shift(LEFT) would shift the
-        # grid one unit to the left, but both of the previous calls to
-        # "self.play" animate that motion.
-
-        # The same applies for any method, including those setting colors.
-        self.play(grid.animate.set_color(YELLOW))
-        self.wait()
-        self.play(
-            grid.animate.set_submobject_colors_by_gradient(
-                BLUE, GREEN
-            )
-        )
-        self.wait()
-        self.play(grid.animate.set_height(TAU - MED_SMALL_BUFF))
-        self.wait()
-
-        # The method Mobject.apply_complex_function lets you apply arbitrary
-        # complex functions, treating the points defining the mobject as
-        # complex numbers.
-        self.play(
-            grid.animate.apply_complex_function(np.exp),
-            run_time=5,
-        )
-        self.wait()
-
-        # Even more generally, you could apply Mobject.apply_function,
-        # which takes in functions form R^3 to R^3
-        self.play(
-            grid.animate.apply_function(
-                lambda p: [
-                    p[0] + 0.5 * math.sin(p[1]),
-                    p[1] + 0.5 * math.sin(p[0]),
-                    p[2],
-                ]
+        to_isolate = ["B", "C", "=", "(", ")"]
+        lines = VGroup(
+            # Passing in muliple arguments to Tex will result
+            # in the same expression as if those arguments had
+            # been joined together, except that the submobject
+            # hierarchy of the resulting mobject ensure that the
+            # Tex mobject has a subject corresponding to
+            # each of these strings.  For example, the Tex mobject
+            # below will have 5 subjects, corresponding to the
+            # expressions [A^2, +, B^2, =, C^2]
+            Tex("A^2", "+", "B^2", "=", "C^2"),
+            # Likewise here
+            Tex("A^2", "=", "C^2", "-", "B^2"),
+            # Alternatively, you can pass in the keyword argument
+            # "isolate" with a list of strings that should be out as
+            # their own submobject.  So the line below is equivalent
+            # to the commented out line below it.
+            Tex("A^2 = (C + B)(C - B)", isolate=["A^2", *to_isolate]),
+            # Tex("A^2", "=", "(", "C", "+", "B", ")", "(", "C", "-", "B", ")"),
+            Tex(
+                "A = \\sqrt{(C + B)(C - B)}",
+                isolate=["A", *to_isolate],
             ),
-            run_time=5,
         )
+        lines.arrange(DOWN, buff=LARGE_BUFF)
+        for line in lines:
+            line.set_color_by_tex_to_color_map(
+                {
+                    "A": BLUE,
+                    "B": TEAL,
+                    "C": GREEN,
+                }
+            )
+
+        play_kw = {"run_time": 2}
+        self.add(lines[0])
+        # The animation TransformMatchingTex will line up parts
+        # of the source and target which have matching tex strings.
+        # Here, giving it a little path_arc makes each part sort of
+        # rotate into their final positions, which feels appropriate
+        # for the idea of rearranging an equation
+        self.play(
+            TransformMatchingTex(
+                lines[0].copy(),
+                lines[1],
+                path_arc=90 * DEGREES,
+            ),
+            **play_kw,
+        )
+        self.wait()
+
+        # Now, we could try this again on the next line...
+        self.play(
+            TransformMatchingTex(lines[1].copy(), lines[2]), **play_kw
+        )
+        self.wait()
+        # ...and this looks nice enough, but since there's no tex
+        # in lines[2] which matches "C^2" or "B^2", those terms fade
+        # out to nothing while the C and B terms fade in from nothing.
+        # If, however, we want the C^2 to go to C, and B^2 to go to B,
+        # we can specify that with a key map.
+        self.play(FadeOut(lines[2]))
+        self.play(
+            TransformMatchingTex(
+                lines[1].copy(),
+                lines[2],
+                key_map={
+                    "C^2": "C",
+                    "B^2": "B",
+                },
+            ),
+            **play_kw,
+        )
+        self.wait()
+
+        # And to finish off, a simple TransformMatchingShapes would work
+        # just fine.  But perhaps we want that exponent on A^2 to transform into
+        # the square root symbol.  At the moment, lines[2] treats the expression
+        # A^2 as a unit, so we might create a new version of the same line which
+        # separates out just the A.  This way, when TransformMatchingTex lines up
+        # all matching parts, the only mismatch will be between the "^2" from
+        # new_line2 and the "\sqrt" from the final line.  By passing in,
+        # transform_mismatches=True, it will transform this "^2" part into
+        # the "\sqrt" part.
+        new_line2 = Tex(
+            "A^2 = (C + B)(C - B)", isolate=["A", *to_isolate]
+        )
+        new_line2.replace(lines[2])
+        new_line2.match_style(lines[2])
+
+        self.play(
+            TransformMatchingTex(
+                new_line2,
+                lines[3],
+                transform_mismatches=True,
+            ),
+            **play_kw,
+        )
+        self.wait(3)
+        self.play(FadeOut(lines, RIGHT))
+
+        # Alternatively, if you don't want to think about breaking up
+        # the tex strings deliberately, you can TransformMatchingShapes,
+        # which will try to line up all pieces of a source mobject with
+        # those of a target, regardless of the submobject hierarchy in
+        # each one, according to whether those pieces have the same
+        # shape (as best it can).
+        source = Text("the morse code", height=1)
+        target = Text("here come dots", height=1)
+
+        self.play(Write(source))
+        self.wait()
+        kw = {"run_time": 3, "path_arc": PI / 2}
+        self.play(TransformMatchingShapes(source, target, **kw))
+        self.wait()
+        self.play(TransformMatchingShapes(target, source, **kw))
         self.wait()
 
 

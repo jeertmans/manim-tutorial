@@ -1,5 +1,5 @@
 from manim import *
-from typing_extensions import runtime
+import os
 
 
 class ShowLine(Scene):
@@ -335,47 +335,78 @@ class Quadrant(VMobject):
 
 
 class MyPi(SVGMobject):
-    CONFIG = {
-        "height": 1,
-        "stroke_color": RED,
-        "stroke_width": 3,
-        "fill_color": RED,
-        "fill_opacity": 0,
-    }
-
     def __init__(self, filename, **kwargs):
         dirpath = "images/"
-        super().__init__(dirpath + filename, **kwargs)
+        super().__init__(
+            file_name=os.path.join(dirpath, filename), **kwargs
+        )
 
 
-class Sample(Scene):
+class SVGExample(Scene):
     def construct(self):
-        Pi = MyPi("dessin.svg")
-        Pi2 = MyPi("dessin2.svg")
-        Pi3 = MyPi("dessin3.svg")
+        self.camera.background_color = WHITE
+        Pi1 = MyPi("drawing1.svg")
+        Pi2 = MyPi("drawing2.svg")
+        Pi3 = MyPi("drawing3.svg")
+        Pi4 = MyPi("blue_drawing.svg")
 
-        self.play(Transform(Pi, Pi2))
-        self.play(Transform(Pi, MyPi("dessin.svg")))
-        self.play(Transform(Pi, Pi3))
+        Pi1.save_state()
+
+        self.play(Create(Pi1))
+
+        self.play(Transform(Pi1, Pi2))
+
+        self.play(Restore(Pi1))
+
+        self.play(Transform(Pi1, Pi3))
+
         matrix = [[1, 1], [0, 2 / 3]]
-        self.play(ApplyMatrix(matrix, Pi))
-        self.play(ShrinkToCenter(Pi), remover=True)
+        self.play(ApplyMatrix(matrix, Pi1))
+
+        self.play(Transform(Pi1, Pi4))
+
+        self.play(Indicate(Pi1))
+
+        self.play(ShrinkToCenter(Pi1), remover=True)
 
 
-class PiAppear(Animation):
+class Count(Animation):
+    """
+    Custom animation, check:
+    https://docs.manim.community/en/stable/tutorials/building_blocks.html#creating-a-custom-animation
+    """
+
     def __init__(
         self,
-        mobject=MyPi("dessin.svg"),
-        mode="linear",
-        **kwargs,
-    ):
-        if not isinstance(mobject, SVGMobject):
-            raise Exception("Pi mobject must be a SVGMobject")
+        number: DecimalNumber,
+        start: float,
+        end: float,
+        **kwargs
+    ) -> None:
+        # Pass number as the mobject of the animation
+        super().__init__(number, **kwargs)
+        # Set start and end
+        self.start = start
+        self.end = end
 
-        Animation.__init__(self, mobject, **kwargs)
-        FadeIn(mobject)
+    def interpolate_mobject(self, alpha: float) -> None:
+        # Set value of DecimalNumber according to alpha
+        value = self.start + (alpha * (self.end - self.start))
+        self.mobject.set_value(value)
 
 
-class test(Scene):
+class CountingScene(Scene):
     def construct(self):
-        self.play(PiAppear())
+        # Create Decimal Number and add it to scene
+        number = DecimalNumber().set_color(WHITE).scale(5)
+        # Add an updater to keep the DecimalNumber centered as its value changes
+        number.add_updater(lambda number: number.move_to(ORIGIN))
+
+        self.add(number)
+
+        self.wait()
+
+        # Play the Count Animation to count from 0 to 100 in 4 seconds
+        self.play(Count(number, 0, 100), run_time=4, rate_func=linear)
+
+        self.wait()
