@@ -38,6 +38,7 @@ jobs:
         run: pip install -r slides/requirements.txt
       - name: Build slides
         run: |
+          ipython kernel install --name "manim" --user
           jupyter nbconvert --to notebook --execute slides/Slides.ipynb
           jupyter nbconvert slides/Slides.ipynb --to slides --no-input
       - name: Rename slides to be index
