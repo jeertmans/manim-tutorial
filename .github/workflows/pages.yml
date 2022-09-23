@@ -33,14 +33,14 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Install Linux Dependencies
-        run: sudo apt install libcairo2-dev libpango1.0-dev ffmpeg
+        run: |
+          sudo apt install libcairo2-dev libpango1.0-dev ffmpeg
+          sudo apt install texlive -y
       - name: Install Python dependencies
         run: pip install -r slides/requirements.txt
       - name: Build slides
         run: |
-          ipython kernel install --name "manim" --user
-          jupyter nbconvert --to notebook --execute slides/Slides.ipynb
-          jupyter nbconvert slides/Slides.ipynb --to slides --no-input
+          jupyter nbconvert slides/Slides.ipynb --to slides --no-input --ExecutePreprocessor.kernel_name=python3 --execute
       - name: Rename slides to be index
         run: mv slides/Slides.slides.html slides/index.html
       - name: Upload artifact
