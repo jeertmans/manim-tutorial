@@ -47,7 +47,7 @@ jobs:
           path: |
             slides/slides.html
             slides/images/
-            slides/media/videos/*/*.mp4
+            slides/media/videos/slides/1080p60/*.mp4
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
