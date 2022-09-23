@@ -35,7 +35,7 @@ jobs:
       - name: Install Linux Dependencies
         run: |
           sudo apt install libcairo2-dev libpango1.0-dev ffmpeg
-          sudo apt install texlive -y
+          sudo apt install texlive-full -y
       - name: Install Python dependencies
         run: pip install -r slides/requirements.txt
       - name: Build slides
