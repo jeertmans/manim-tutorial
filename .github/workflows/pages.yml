@@ -82,8 +82,9 @@ jobs:
         with:
           # Upload slides dir
           path: |
-            slides/slides.html
+            slides/index.html
             slides/images/
+            slides/media/**/*.mp4
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
