@@ -37,7 +37,7 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r slides/requirements.txt
       - name: Build slides
-        run: jupyter nbconvert slides/Slides.ipynb --to slides --no-input
+        run: jupyter nbconvert slides/Slides.ipynb --to slides --no-input --embed-images
       - name: Rename slides to be index
         run: mv slides/Slides.slides.html slides/index.html
       - name: Upload artifact
