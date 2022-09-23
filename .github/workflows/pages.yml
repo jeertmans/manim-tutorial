@@ -37,7 +37,9 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r slides/requirements.txt
       - name: Build slides
-        run: jupyter nbconvert slides/Slides.ipynb --to slides --no-input
+        run: |
+          jupyter nbconvert --to notebook --execute slides/Slides.ipynb
+          jupyter nbconvert slides/Slides.ipynb --to slides --no-input
       - name: Rename slides to be index
         run: mv slides/Slides.slides.html slides/index.html
       - name: Upload artifact
@@ -47,7 +49,7 @@ jobs:
           path: |
             slides/slides.html
             slides/images/
-            slides/media/videos/slides/1080p60/*.mp4
+            slides/media/videos/slides/*/*.mp4
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
