@@ -86,6 +86,9 @@ jobs:
             -cvf "$RUNNER_TEMP/artifact.tar" \
             --exclude=.git \
             --exclude=.github \
+            --exclude="**/partial_movie_files/**/*" \
+            --exclude="**/Tex/*" \
+            --exclude="*.ipynb" \
             .
       - name: Upload artifact
         uses: actions/upload-artifact@v3
