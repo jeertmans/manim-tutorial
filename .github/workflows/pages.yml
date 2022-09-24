@@ -78,15 +78,15 @@ jobs:
       - name: Rename slides to be index
         run: mv slides/Slides.slides.html slides/index.html
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-pages-artifact@v1
         with:
           # Upload slides dir
-          name: github-pages
-          retention-days: 1
-          path: |
-            slides/index.html
-            slides/images/
-            slides/media/**/*.mp4
+          #name: github-pages
+          #retention-days: 1
+          path: slides/media/videos/slides/1080p60/
+          #slides/index.html
+          #slides/images/
+          #slides/media/**/*.mp4
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
