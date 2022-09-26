@@ -79,7 +79,7 @@ jobs:
         run: mv slides/Slides.slides.html slides/index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
-        with:                     
+        with:
           path: 'slides/'
       - name: Deploy to GitHub Pages
         id: deployment
