@@ -77,26 +77,10 @@ jobs:
           jupyter nbconvert slides/Slides.ipynb --to slides --no-input --ExecutePreprocessor.kernel_name=python3 --execute
       - name: Rename slides to be index
         run: mv slides/Slides.slides.html slides/index.html
-      - name: Archive artifact
-        shell: bash
-        run: |
-          tar \
-            --dereference --hard-dereference \
-            --directory "slides/" \
-            -cvf "$RUNNER_TEMP/artifact.tar" \
-            --exclude=.git \
-            --exclude=.github \
-            --exclude="**/partial_movie_files/**/*" \
-            --exclude="**/Tex/*" \
-            --exclude="*.ipynb" \
-            .
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          # Upload slides dir
-          name: github-pages
-          path: ${{ runner.temp }}/artifact.tar
-          retention-days: 1
+        uses: actions/upload-pages-artifact@v1
+        with:                     
+          path: 'slides/'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
