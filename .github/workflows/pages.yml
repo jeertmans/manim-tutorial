@@ -97,10 +97,6 @@ jobs:
           name: github-pages
           path: ${{ runner.temp }}/artifact.tar
           retention-days: 1
-          #path: slides/media/videos/slides/1080p60/
-          #slides/index.html
-          #slides/images/
-          #slides/media/**/*.mp4
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
