@@ -5,7 +5,9 @@ from manim_slides import Slide
 class RootExample(Slide):
     def construct(self):
         ax = Axes(
-            x_range=[0, 10], y_range=[-30, 100, 10], axis_config={"include_tip": False}
+            x_range=[0, 10],
+            y_range=[-30, 100, 10],
+            axis_config={"include_tip": False},
         )
         labels = ax.get_axis_labels(x_label="x", y_label="f(x)")
 
@@ -41,7 +43,11 @@ class RootExample(Slide):
             .to_corner(UR)
         )
 
-        dot.add_updater(lambda x: x.move_to(ax.c2p(t.get_value(), f(t.get_value()))))
+        dot.add_updater(
+            lambda x: x.move_to(
+                ax.c2p(t.get_value(), f(t.get_value()))
+            )
+        )
 
         self.add(ax, labels, graph, dot)
         self.wait()
@@ -58,7 +64,11 @@ class RootExample(Slide):
             dest = ax.c2p(x, y)
             direction = Arrow(dot, dest)
             self.play(Create(direction))
-            self.play(AnimationGroup(t.animate.set_value(x), FadeOut(direction)))
+            self.play(
+                AnimationGroup(
+                    t.animate.set_value(x), FadeOut(direction)
+                )
+            )
             self.pause()
 
         self.wait(5)
