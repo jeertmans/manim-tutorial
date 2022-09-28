@@ -134,7 +134,7 @@ On top of Manim and ManimGL, many users have created their own animations, libra
 To cite a few, we recommend checking:
 
 * [Manim Physics](https://github.com/Matheart/manim-physics), a physics simulation plugin for Manim
-* [Reducible's YouTube channel](https://www.youtube.com/c/Reducible), a YouTuber that utilizes Manim for its videos ![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UCK8XIGR5kRidIw2fWqwyHRA?style=social)
+* [Reducible](https://www.youtube.com/c/Reducible), a YouTuber that utilizes Manim for its videos ![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UCK8XIGR5kRidIw2fWqwyHRA?style=social)
 * the Manim subreddit for questions and inspirations <a href="https://www.reddit.com/r/manim/"><img src="https://img.shields.io/reddit/subreddit-subscribers/manim?style=social" alt="Manim Subreddit"></a>
 * the Manim Community discord for questions and inspirations <a href="https://www.manim.community/discord/"><img src="https://img.shields.io/discord/581738731934056449.svg?label=discord&color=yellow&logo=discord" alt="Discord"></a>
 
