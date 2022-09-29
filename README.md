@@ -21,7 +21,6 @@
     * [Use Manim within Jupyter](#use-manim-within-jupyter)
     * [Create slides with Manim Slides](#create-slides-with-manim-slides)
     * [Manim Physics and more](#manim-physics-and-more)
-* [TODOs](#todos)
 
 # About Manim and ManimGL
 
