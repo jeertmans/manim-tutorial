@@ -1,38 +1,67 @@
 BEGIN:VCALENDAR
-PRODID:-//Google Inc//Google Calendar 70.9054//EN
-VERSION:2.0
-CALSCALE:GREGORIAN
 METHOD:PUBLISH
+PRODID:Microsoft Exchange Server 2010
+VERSION:2.0
 X-WR-CALNAME:Manim Tutorial
-X-WR-TIMEZONE:Europe/Brussels
+BEGIN:VTIMEZONE
+TZID:Romance Standard Time
+BEGIN:STANDARD
+DTSTART:16010101T030000
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+RRULE:FREQ=YEARLY;INTERVAL=1;BYDAY=-1SU;BYMONTH=10
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:16010101T020000
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+RRULE:FREQ=YEARLY;INTERVAL=1;BYDAY=-1SU;BYMONTH=3
+END:DAYLIGHT
+END:VTIMEZONE
 BEGIN:VEVENT
-DTSTART:20221018T143000Z
-DTEND:20221018T153000Z
-DTSTAMP:20220930T130134Z
-UID:4h0b1gc5j3goc5tv7ubd947qai@google.com
-CLASS:PUBLIC
-CREATED:20220930T112130Z
-DESCRIPTION:<html-blob><u></u>The IEEE Student Branch is pleased to invite 
- you to this Manim Tutorial.</html-blob><br><html-blob><u></u><br><u></u>Dur
- ing this presentation\, we will give you an overview of what you can do wit
- h Manim\, and how you can use it for your research / presentations / teachi
- ng activities.</html-blob><br><html-blob><u></u><br><u></u>The slides and t
- he presentation recording will be freely available.<br><u></u><br><u></u>Li
- nk to Teams Meeting:&nbsp\;<u></u><a href="https://teams.microsoft.com/l/me
- etup-join/19%3ameeting_ZTJhNWJiNzYtOWEwZC00ZDQxLTg3NmMtMDgwMjcwZDQ5NDM1%40t
- hread.v2/0?context=%7b%22Tid%22%3a%227ab090d4-fa2e-4ecf-bc7c-4127b4d582ec%2
- 2%2c%22Oid%22%3a%223ae5a043-dd2e-4b71-a2c8-e19aabed8100%22%7d">https://www.
- google.com/url?q=https://teams.microsoft.com/l/meetup-join/19%253ameeting_Z
- TJhNWJiNzYtOWEwZC00ZDQxLTg3NmMtMDgwMjcwZDQ5NDM1%2540thread.v2/0?context%3D%
- 257b%2522Tid%2522%253a%25227ab090d4-fa2e-4ecf-bc7c-4127b4d582ec%2522%252c%2
- 522Oid%2522%253a%25223ae5a043-dd2e-4b71-a2c8-e19aabed8100%2522%257d&amp\;sa
- =D&amp\;source=calendar&amp\;usd=2&amp\;usg=AOvVaw06TfW_8vpUvG82MZLM2CT2</a
- ></html-blob>
-LAST-MODIFIED:20220930T130128Z
-LOCATION:Barb 92
-SEQUENCE:0
-STATUS:CONFIRMED
+DESCRIPTION:The IEEE Student Branch is pleased to invite you to this Manim 
+ Tutorial.\n\nDuring this presentation\, we will give you an overview of wh
+ at you can do with Manim\, and how you can use it for your research / pres
+ entations / teaching activities.\n\nThe slides and the presentation record
+ ing will be freely available.\n\nLink to GitHub: https://github.com/jeertm
+ ans/manim-tutorial\nLink for remote Teams session: https://teams.microsoft
+ .com/l/meetup-join/19%3ameeting_ZTJhNWJiNzYtOWEwZC00ZDQxLTg3NmMtMDgwMjcwZD
+ Q5NDM1%40thread.v2/0?context=%7b%22Tid%22%3a%227ab090d4-fa2e-4ecf-bc7c-412
+ 7b4d582ec%22%2c%22Oid%22%3a%223ae5a043-dd2e-4b71-a2c8-e19aabed8100%22%7d\n
+ \n________________________________________________________________________
+ ________\nRéunion Microsoft Teams\nRejoindre sur votre ordinateur ou appl
+ ication mobile\nCliquez ici pour participer à la réunion<https://teams.m
+ icrosoft.com/l/meetup-join/19%3ameeting_ZTJhNWJiNzYtOWEwZC00ZDQxLTg3NmMtMD
+ gwMjcwZDQ5NDM1%40thread.v2/0?context=%7b%22Tid%22%3a%227ab090d4-fa2e-4ecf-
+ bc7c-4127b4d582ec%22%2c%22Oid%22%3a%223ae5a043-dd2e-4b71-a2c8-e19aabed8100
+ %22%7d>\nID de réunion : 373 948 091 101\nCode secret : 6SiyYN\nTélécha
+ rger Teams<https://www.microsoft.com/en-us/microsoft-teams/download-app> |
+  Rejoindre sur le web<https://www.microsoft.com/microsoft-teams/join-a-mee
+ ting>\nPour en savoir plus<https://aka.ms/JoinTeamsMeeting> | Options de r
+ éunion<https://teams.microsoft.com/meetingOptions/?organizerId=3ae5a043-d
+ d2e-4b71-a2c8-e19aabed8100&tenantId=7ab090d4-fa2e-4ecf-bc7c-4127b4d582ec&t
+ hreadId=19_meeting_ZTJhNWJiNzYtOWEwZC00ZDQxLTg3NmMtMDgwMjcwZDQ5NDM1@thread
+ .v2&messageId=0&language=fr-BE>\n_________________________________________
+ _______________________________________\n
+UID:040000008200E00074C5B7101A82E008000000007DB88E9EAFD4D801000000000000000
+ 01000000085B64B13F3D3784590FAD644C050C949
 SUMMARY:Manim Tutorial - IEEE SB
+DTSTART;TZID=Romance Standard Time:20221018T163000
+DTEND;TZID=Romance Standard Time:20221018T173000
+CLASS:PUBLIC
+PRIORITY:5
+DTSTAMP:20220930T164224Z
 TRANSP:OPAQUE
+STATUS:CONFIRMED
+SEQUENCE:0
+LOCATION:Barb 92
+X-MICROSOFT-CDO-APPT-SEQUENCE:0
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+X-MICROSOFT-CDO-INTENDEDSTATUS:BUSY
+X-MICROSOFT-CDO-ALLDAYEVENT:FALSE
+X-MICROSOFT-CDO-IMPORTANCE:1
+X-MICROSOFT-CDO-INSTTYPE:0
+X-MICROSOFT-DONOTFORWARDMEETING:FALSE
+X-MICROSOFT-DISALLOW-COUNTER:FALSE
 END:VEVENT
 END:VCALENDAR
