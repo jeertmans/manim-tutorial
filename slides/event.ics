@@ -19,7 +19,7 @@ RRULE:FREQ=YEARLY;INTERVAL=1;BYDAY=-1SU;BYMONTH=3
 END:DAYLIGHT
 END:VTIMEZONE
 BEGIN:VEVENT
-DESCRIPTION:The IEEE Student Branch is pleased to invite you to this Manim 
+DESCRIPTION:The IEEE Student Branch is pleased to invite you to this Manim
  Tutorial.\n\nDuring this presentation\, we will give you an overview of wh
  at you can do with Manim\, and how you can use it for your research / pres
  entations / teaching activities.\n\nThe slides and the presentation record
