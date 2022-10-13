@@ -75,6 +75,8 @@ jobs:
       - name: Build slides
         run: |
           jupyter nbconvert slides/Slides.ipynb --to slides --no-input --ExecutePreprocessor.kernel_name=python3 --execute --SlidesExporter.reveal_number='c' --SlideExporter.reveal_controls=false
+      - name: Change slides' title
+        run: sed -i -E "s|<title>(.*)<\/title>|<title>Manim Tutorial<\/title>|g" slides/Slides.slides.html
       - name: Rename slides to be index
         run: mv slides/Slides.slides.html slides/index.html
       - name: Archive artifact
