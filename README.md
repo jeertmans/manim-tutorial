@@ -123,7 +123,7 @@ pip install jupyter # if not done, this installs Jupyter Notebooks
 ipython kernel install --name "your-env" --user
 ```
 
-where `"you-venv"` refers to the name of your new kernel.
+where `"your-venv"` refers to the name of your new kernel.
 
 Then, you can now change the kernel in any notebook by clicking `Kernel` -> `Change kernel` -> `your-env`.
 
