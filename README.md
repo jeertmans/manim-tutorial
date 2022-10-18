@@ -7,7 +7,7 @@
 * **What:** a rapid overview of Manim and how to use it.
 * **Target Audience**: Master & PhD students, as well as professors.
 * **Authors:** [Jérome Eertmans](mailto:jerome.eertmans@uclouvain.be) and [Olivier Leblanc](mailto:o.leblanc@uclouvain.be), from UCLouvain.
-* **Recording of Live Tutorial Session:** *video will be available after October 18th.*
+* **Recording of Live Tutorial Session:** https://youtu.be/B94uvQKzFEE.
 
 # Table of Contents
 
