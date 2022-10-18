@@ -335,7 +335,7 @@ class Quadrant(VMobject):
         self.set_points_smoothly(points)
 
 
-class MyPi(SVGMobject):
+class MySVG(SVGMobject):
     def __init__(self, filename, **kwargs):
         dirpath = "images/"
         super().__init__(
@@ -346,28 +346,28 @@ class MyPi(SVGMobject):
 class SVGExample(Scene):
     def construct(self):
         self.camera.background_color = WHITE
-        Pi1 = MyPi("duck1.svg")
-        Pi2 = MyPi("duck2.svg")
-        Pi3 = MyPi("duck_blue.svg")
+        SVG1 = MySVG("duck1.svg")
+        SVG2 = MySVG("duck2.svg")
+        SVG3 = MySVG("duck_blue.svg")
 
-        Pi1.save_state()
+        SVG1.save_state()
 
-        self.play(Create(Pi1))
+        self.play(Write(SVG1), run_time=3)
 
-        self.play(Transform(Pi1, Pi2))
+        self.play(Transform(SVG1, SVG2))
 
-        self.play(Restore(Pi1))
+        self.play(Restore(SVG1))
 
-        self.play(Transform(Pi1, Pi2))
+        self.play(Transform(SVG1, SVG2))
 
         matrix = [[-1, 0], [0, 1]]
-        self.play(ApplyMatrix(matrix, Pi1))
+        self.play(ApplyMatrix(matrix, SVG1))
 
-        self.play(Transform(Pi1, Pi3))
+        self.play(Transform(SVG1, SVG3))
 
-        self.play(Indicate(Pi1))
+        self.play(Wiggle(SVG1))
 
-        self.play(ShrinkToCenter(Pi1), remover=True)
+        self.play(ShrinkToCenter(SVG1), remover=True)
 
 
 class Count(Animation):
