@@ -346,10 +346,9 @@ class MyPi(SVGMobject):
 class SVGExample(Scene):
     def construct(self):
         self.camera.background_color = WHITE
-        Pi1 = MyPi("drawing1.svg")
-        Pi2 = MyPi("drawing2.svg")
-        Pi3 = MyPi("drawing3.svg")
-        Pi4 = MyPi("blue_drawing.svg")
+        Pi1 = MyPi("duck1.svg")
+        Pi2 = MyPi("duck2.svg")
+        Pi3 = MyPi("duck_blue.svg")
 
         Pi1.save_state()
 
@@ -359,12 +358,12 @@ class SVGExample(Scene):
 
         self.play(Restore(Pi1))
 
-        self.play(Transform(Pi1, Pi3))
+        self.play(Transform(Pi1, Pi2))
 
-        matrix = [[1, 1], [0, 2 / 3]]
+        matrix = [[-1, 0], [0, 1]]
         self.play(ApplyMatrix(matrix, Pi1))
 
-        self.play(Transform(Pi1, Pi4))
+        self.play(Transform(Pi1, Pi3))
 
         self.play(Indicate(Pi1))
 
